@@ -92,7 +92,6 @@ a:hover {
     text-align: center;
     cursor: pointer;
     border-radius: 50%;
-    background: linear-gradient(-135deg, #c850c0, #4158d0);
 }
 
 .search-btn span{

@@ -145,21 +145,21 @@ $("#hitokoto").click(function () {
 // 请前往 https://www.mxnzp.com/doc/list 申请 app_id 和 app_secret
 const mainKey = "eaa90d0e9dcbfdb13df70e42e49f3a2b"; // 高德开发者 Key
 const getWeather = () => {
-  fetch(`https://restapi.amap.com/v3/ip?key=${mainKey}`)
+  fetch(`https://www.mxnzp.com/api/ip/self?app_id=nhepiuspjpibkyoz&app_secret=2HHa4duf6qnAxFdtZCjBjuqIDx1gWQlT`)
     .then((response) => response.json())
     .then((res) => {
-      const adcode = res.adcode;
-      $("#city_text").html(res.city);
+      $dizhi = res.data.city
+      $("#city_text").html(res.data.city);;
       fetch(
-        `https://restapi.amap.com/v3/weather/weatherInfo?key=${mainKey}&city=${adcode}`
+        `https://www.mxnzp.com/api/weather/current/${$dizhi}?app_id=nhepiuspjpibkyoz&app_secret=2HHa4duf6qnAxFdtZCjBjuqIDx1gWQlT`
       )
         .then((response) => response.json())
         .then((res) => {
-          if (res.status) {
-            $("#wea_text").html(res.lives[0].weather);
-            $("#tem_text").html(res.lives[0].temperature + "°C&nbsp;");
-            $("#win_text").html(res.lives[0].winddirection + "风");
-            $("#win_speed").html(res.lives[0].windpower + "级");
+          if (res.data) {
+            $("#wea_text").html(res.data.weather);
+            $("#tem_text").html(res.data.temp);
+            $("#win_text").html(res.data.windDirection);
+            $("#win_speed").html(res.data.windPower + "级");
           } else {
             console.error("天气信息获取失败");
             iziToast.show({

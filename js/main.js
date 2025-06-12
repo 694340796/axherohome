@@ -150,15 +150,13 @@ const getWeather = () => {
       $dizhi = res.data.city
       $("#city_text").html(res.data.city);;
       fetch(
-        `https://www.mxnzp.com/api/weather/current/${$dizhi}?app_id=nhepiuspjpibkyoz&app_secret=2HHa4duf6qnAxFdtZCjBjuqIDx1gWQlT`
+        `https://api.seniverse.com/v3/weather/now.json?key=SOyMnz-nNvctOZWxV&location=${$dizhi}&language=zh-Hans&unit=c`
       )
         .then((response) => response.json())
         .then((res) => {
-          if (res.data) {
-            $("#wea_text").html(res.data.weather);
-            $("#tem_text").html(res.data.temp);
-            $("#win_text").html(res.data.windDirection);
-            $("#win_speed").html(res.data.windPower + "级");
+          if (res.results) {
+            $("#tem_text").html("天气：" + res.results[0].now.text + "&emsp;");
+            $("#win_text").html(res.results[0].now.temperature + "°C&nbsp;");
           } else {
             console.error("天气信息获取失败");
             iziToast.show({

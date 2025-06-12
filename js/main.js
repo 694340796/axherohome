@@ -151,8 +151,9 @@ const getWeather = () => {
       $dizhi = res.data.city
       $("#city_text").html(res.data.city);;
       fetch(
-        `https://api.seniverse.com/v3/weather/now.json?key=SOyMnz-nNvctOZWxV&location=11&language=zh-Hans&unit=c`
-      )
+        `https://api.seniverse.com/v3/weather/now.json?key=SOyMnz-nNvctOZWxV&location=${$dizhi}&language=zh-Hans&unit=c
+        `
+          )
         .then((response) => response.json())
         .then((res) => {
           if (res.results) {

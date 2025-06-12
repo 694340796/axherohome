@@ -143,7 +143,6 @@ $("#hitokoto").click(function () {
 
 // 获取天气
 // 请前往 https://www.mxnzp.com/doc/list 申请 app_id 和 app_secret
-const mainKey = "eaa90d0e9dcbfdb13df70e42e49f3a2b"; // 高德开发者 Key
 const getWeather = () => {
   fetch(`https://www.mxnzp.com/api/ip/self?app_id=nhepiuspjpibkyoz&app_secret=2HHa4duf6qnAxFdtZCjBjuqIDx1gWQlT`)
     .then((response) => response.json())
